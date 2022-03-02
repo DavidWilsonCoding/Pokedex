@@ -12,8 +12,31 @@ let pokemonList = [
     },
     {
         name: "Pidgeotto",
-        height: 1.1,
+        height: 1.6,
         types: ["keen-eye", "tangled-feet", "big-pecks"]
     }
 
 ];
+
+// declare variable to hold details about each pokemon to be written to HTML document
+
+let pokemonDetails = '';
+
+// loop to iterate through pokemon array
+
+for (i=0; i < pokemonList.length; i++) {
+
+    // assign pokemon name and height to pokemonDetails variable
+
+    pokemonDetails = `<span class="pokemon-details pokemon-details__name pokemon-details__name--${i}">${pokemonList[i].name}</span> <span class="pokemon-details pokemon-details__height pokemon-details__height--${i}"> (height: ${pokemonList[i].height})</span>`;
+
+    // concatenate comment to pokemonDetails variable, based on height criterion
+
+    if (pokemonList[i].height > 1.5) {
+
+        pokemonDetails = `${pokemonDetails}<span class="pokemon-details pokemon-details__comment pokemon-details__comment--${i}"> - Wow, that's big!</span>`;
+
+    }
+
+    document.write(`${pokemonDetails}<br>`);
+}
