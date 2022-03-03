@@ -22,9 +22,9 @@ let pokemonList = [
 
 let pokemonDetails = '';
 
-// forEach method to iterate through pokemon array
+// loop to iterate through pokemon array
 
-pokemonList.forEach(function(pokemon, i) {
+for (i=0; i < pokemonList.length; i++) {
 
     // assign pokemon name and height to pokemonDetails variable
 
@@ -39,6 +39,4 @@ pokemonList.forEach(function(pokemon, i) {
     }
 
     document.write(`${pokemonDetails}<br>`);
-});
-
-
+}
