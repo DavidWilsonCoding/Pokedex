@@ -28,7 +28,7 @@ for (i=0; i < pokemonList.length; i++) {
 
     // assign pokemon name and height to pokemonDetails variable
 
-    pokemonDetails = `<span class="pokemon-details pokemon-details__name pokemon-details__name--${i}">${pokemonList[i].name}</span> <span class="pokemon-details pokemon-details__height pokemon-details__height--${i}"> (height: ${pokemonList[i].height})</span>`;
+    pokemonDetails = `${pokemonDetails}<span class="pokemon-details pokemon-details__name pokemon-details__name--${i}">${pokemonList[i].name}</span> <span class="pokemon-details pokemon-details__height pokemon-details__height--${i}"> (height: ${pokemonList[i].height})</span>`;
 
     // concatenate comment to pokemonDetails variable, based on height criterion
 
@@ -38,5 +38,8 @@ for (i=0; i < pokemonList.length; i++) {
 
     }
 
-    document.write(`${pokemonDetails}<br>`);
+    if (i<pokemonList.length-1){
+        pokemonDetails = `${pokemonDetails}<br>`
+    }
 }
+document.write(`${pokemonDetails}`);
