@@ -18,28 +18,24 @@ let pokemonList = [
 
 ];
 
-// declare variable to hold details about each pokemon to be written to HTML document
 
-let pokemonDetails = '';
-
-// loop to iterate through pokemon array
-
-for (i=0; i < pokemonList.length; i++) {
-
-    // assign pokemon name and height to pokemonDetails variable
-
-    pokemonDetails = `${pokemonDetails}<span class="pokemon-details pokemon-details__name pokemon-details__name--${i}">${pokemonList[i].name}</span> <span class="pokemon-details pokemon-details__height pokemon-details__height--${i}"> (height: ${pokemonList[i].height})</span>`;
-
-    // concatenate comment to pokemonDetails variable, based on height criterion
-
-    if (pokemonList[i].height > 1.5) {
-
-        pokemonDetails = `${pokemonDetails}<span class="pokemon-details pokemon-details__comment pokemon-details__comment--${i}"> - Wow, that's big!</span>`;
-
-    }
-
-    if (i<pokemonList.length-1){
-        pokemonDetails = `${pokemonDetails}<br>`
-    }
+function retObjArrDetails(objArr, objArrClass, objArrKeys) {
+    // declare variable to hold details about each pokemon to be written to HTML document
+    let objArrDetails = '';
+    //iterates through objArr (array of objects) 
+    objArr.forEach(function(objArr, i) {
+        objArrKeys.forEach(function(val, j, arr) {
+            // Adds span element to objArrDetails to be returned by parent fundtion
+            objArrDetails += `<span class="${objArrClass} ${objArrClass}${i} ${objArrClass}__${arr[j]} ${objArrClass}__${arr[j]}--${i}">${objArr[val]} </span>`;
+        });
+        // Concatenates span element to objArrDetails if specified criterion met
+        if (objArr.height > 1.3) {
+            objArrDetails = `${objArrDetails}<span class="span class="${objArrClass} ${objArrClass}__comment ${objArrClass}__comment--${i}"> - Wow, that's big!</span>`;
+        }
+        objArrDetails += `<br>`;
+    });
+    return objArrDetails;
 }
-document.write(`${pokemonDetails}`);
+
+listDetails = retObjArrDetails(pokemonList, "pokemon", ["name", "height"]);
+document.write(listDetails);
