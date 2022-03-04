@@ -1,23 +1,40 @@
-let pokemonList = [
+// Declares global scope vairable and initializes to IIFE to create cope of pokemonList 
+let pokemonRepository = (function(){
+    // 
+    let pokemonList = [
+        {
+            name: "Chameleon",
+            height: 1.1,
+            types: ["blaze", "solar power"]
+        },
+        {
+            name: "Wartortle",
+            height: 1,
+            types: ["rain-dish", "torrent"]
+        },
+        {
+            name: "Pidgeotto",
+            height: 1.6,
+            types: ["keen-eye", "tangled-feet", "big-pecks"]
+        }
 
-    {
-        name: "Chameleon",
-        height: 1.1,
-        types: ["blaze", "solar power"]
-    },
-    {
-        name: "Wartortle",
-        height: 1,
-        types: ["rain-dish", "torrent"]
-    },
-    {
-        name: "Pidgeotto",
-        height: 1.6,
-        types: ["keen-eye", "tangled-feet", "big-pecks"]
-    }
+        ];
 
-];
+        // Adds Pokemon to pokemonList
+        function add(pokemon) {
+            pokemonList.push(pokemon);
+        }
+        // Returns all pokemon to pokemonRespoitory
+          function getAll() {
+            return pokemonList;
+        }
 
+        return {
+            add: add,
+            getAll: getAll
+        };
+    
+    })();
 
 function retObjArrDetails(objArr, objArrClass, objArrKeys) {
     // declare variable to hold details about each pokemon to be written to HTML document
@@ -37,5 +54,5 @@ function retObjArrDetails(objArr, objArrClass, objArrKeys) {
     return objArrDetails;
 }
 
-listDetails = retObjArrDetails(pokemonList, "pokemon", ["name", "height"]);
+listDetails = retObjArrDetails(pokemonRepository.getAll(), "pokemon", ["name", "height"]);
 document.write(listDetails);
