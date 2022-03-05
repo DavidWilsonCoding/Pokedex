@@ -1,0 +1,32 @@
+* {
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightpink;
+}
+
+.pokemon-list {
+    list-style: none;
+}
+
+.pokemon-button {
+    width: 300px;
+    color: white;
+    padding: 16px 30px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: ivory;
+    color: darkblue;
+    border: 6px solid tomato;
+    border-radius: 15px;
+}
