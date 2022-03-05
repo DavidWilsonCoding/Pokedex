@@ -24,12 +24,13 @@ let pokemonRepository = (function(){
         function add(pokemon) {
             pokemonList.push(pokemon);
         }
+
         // Returns all pokemon to pokemonRespoitory
         function getAll() {
             return pokemonList;
         }
 
-        // Creates a list of pokemon in buttons
+        // Creates a list of pokemon in HTMl buttons and adds to the <ul> in document
         function addListItem(pokemon) {
             let pokemonUl = document.querySelector(".pokemon-list");
             let listPokemon = document.createElement('li');
@@ -38,6 +39,11 @@ let pokemonRepository = (function(){
             button.classList.add("pokemon-button");
             listPokemon.appendChild(button);
             pokemonUl.appendChild(listPokemon);
+        }
+
+        //logs pokemon name to the console
+        function showDetails(pokemon) {
+            console.log(pokemon.name);
         }
 
         return {
@@ -51,6 +57,3 @@ let pokemonRepository = (function(){
 pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
 });
-
-listDetails = retObjArrDetails(pokemonRepository.getAll(), "pokemon", ["name", "height"]);
-document.write(listDetails);
