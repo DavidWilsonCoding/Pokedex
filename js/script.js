@@ -1,6 +1,6 @@
 // Declares global scope vairable and initializes to IIFE to create cope of pokemonList 
 let pokemonRepository = (function(){
-    // 
+    
     let pokemonList = [
         {
             name: "Chameleon",
@@ -25,34 +25,32 @@ let pokemonRepository = (function(){
             pokemonList.push(pokemon);
         }
         // Returns all pokemon to pokemonRespoitory
-          function getAll() {
+        function getAll() {
             return pokemonList;
+        }
+
+        // Creates a list of pokemon in buttons
+        function addListItem(pokemon) {
+            let pokemonUl = document.querySelector(".pokemon-list");
+            let listPokemon = document.createElement('li');
+            let button = document.createElement('button');
+            button.innerText = pokemon.name;
+            button.classList.add("pokemon-button");
+            listPokemon.appendChild(button);
+            pokemonUl.appendChild(listPokemon);
         }
 
         return {
             add: add,
-            getAll: getAll
+            getAll: getAll,
+            addListItem: addListItem
         };
     
     })();
 
-function retObjArrDetails(objArr, objArrClass, objArrKeys) {
-    // declare variable to hold details about each pokemon to be written to HTML document
-    let objArrDetails = '';
-    //iterates through objArr (array of objects) 
-    objArr.forEach(function(objArr, i) {
-        objArrKeys.forEach(function(val, j, arr) {
-            // Adds span element to objArrDetails to be returned by parent fundtion
-            objArrDetails += `<span class="${objArrClass} ${objArrClass}${i} ${objArrClass}__${arr[j]} ${objArrClass}__${arr[j]}--${i}">${objArr[val]} </span>`;
-        });
-        // Concatenates span element to objArrDetails if specified criterion met
-        if (objArr.height > 1.3) {
-            objArrDetails = `${objArrDetails}<span class="span class="${objArrClass} ${objArrClass}__comment ${objArrClass}__comment--${i}"> - Wow, that's big!</span>`;
-        }
-        objArrDetails += `<br>`;
-    });
-    return objArrDetails;
-}
+pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+});
 
 listDetails = retObjArrDetails(pokemonRepository.getAll(), "pokemon", ["name", "height"]);
 document.write(listDetails);
