@@ -30,6 +30,13 @@ let pokemonRepository = (function(){
             return pokemonList;
         }
 
+        // Add an event listener which fires on a click event for pokemon buttons
+        function addListener(button, pokemon) {
+            button.addEventListener("click", function () {
+            showDetails(pokemon);
+            });
+        }
+
         // Creates a list of pokemon in HTMl buttons and adds to the <ul> in document
         function addListItem(pokemon) {
             let pokemonUl = document.querySelector(".pokemon-list");
@@ -39,6 +46,7 @@ let pokemonRepository = (function(){
             button.classList.add("pokemon-button");
             listPokemon.appendChild(button);
             pokemonUl.appendChild(listPokemon);
+            addListener(button, pokemon);
         }
 
         //logs pokemon name to the console
@@ -49,7 +57,8 @@ let pokemonRepository = (function(){
         return {
             add: add,
             getAll: getAll,
-            addListItem: addListItem
+            addListItem: addListItem,
+            showDetails: showDetails
         };
     
     })();
