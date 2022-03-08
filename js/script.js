@@ -16,7 +16,7 @@ let pokemonRepository = (function(){
         return pokemonList;
     }
 
-    //add an event listener which fires on a click event for pokemon buttons
+    //provides pokemon details when pokemon button clicked
     function addListener(button, pokemon) {
         button.addEventListener("click", function () {
         showDetails(pokemon);
@@ -50,16 +50,37 @@ let pokemonRepository = (function(){
             };
             //call add function to push pokemon to pokemonList
             add(pokemon);
-            });
-            //error handling
+        });
+        //error handling
         }).catch(function (e) {
             console.error(e);
         })
     }
 
-    //logs pokemon name to the console
+    //provide detailed information about each pokemon. (Called by showDetails after button click event).
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        //get pokemon details from api
+        return fetch(url)
+        .then(function (response) {
+            //converts pokemon details to json object
+            return response.json();
+        })
+        .then(function (details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        })
+        .catch(function (e) {
+            console.error(e);
+        });
+    }
+
+    //logs pokemon details to the console. (Called by button click event).
     function showDetails(pokemon) {
-        console.log(pokemon.name);
+        loadDetails(pokemon).then(function () {
+          console.log(pokemon);
+        });
     }
 
     return {
@@ -67,12 +88,15 @@ let pokemonRepository = (function(){
         getAll: getAll,
         addListItem: addListItem,
         showDetails: showDetails,
-        loadList: loadList
+        loadList: loadList,
+        loadDetails: loadDetails
     };
     
 })();
 
+//IIFE private function to populate pokemonList
 pokemonRepository.loadList().then(function () {
+    //returns pokemonList and renders a button to the HTML document to represent each pokemo in pokemonList by name
     pokemonRepository.getAll().forEach(function (pokemon) {
         pokemonRepository.addListItem(pokemon);
     });
