@@ -23,6 +23,7 @@ let pokemonRepository = (function(){
         let closeButtonElement = document.createElement('button');
         closeButtonElement.classList.add('modal-close');
         closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
         //add modal title
         let titleElement = document.createElement('h1');
         titleElement.innerText = title;
@@ -37,11 +38,36 @@ let pokemonRepository = (function(){
         modalContainer.appendChild(modal);
         //add the css class to display the modal
         modalContainer.classList.add('is-visible');
+
+        //calls hideModal when on escape keydown event
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modalContainer.classList.contains('is-visible')) {
+                console.log("escape key pressed");
+                hideModal();
+            }
+        });
+        
+        //calls hideModal om click event of modalContainer
+        modalContainer.addEventListener("click", (e) => {
+            let target = e.target;
+            if (target === modalContainer) {
+              hideModal();
+            }
+        });
+
+    }
+
+    //hides modal when called (by close button click event, escape key keydown event or clicking outside of modal (on modalContainer))
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
     }
 
     document.querySelector('#show-modal').addEventListener('click', () => {
         showModal('Modal Title', 'This is the text for the modal');
     });
+
+
 
     //return all pokemon to pokemonRespoitory
     function getAll() {
