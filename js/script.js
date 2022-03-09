@@ -11,6 +11,14 @@ let pokemonRepository = (function(){
         pokemonList.push(pokemon);
     }
 
+    //shows modal when called
+    function showModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.add('is-visible');
+    }
+
+    document.querySelector('#show-modal').addEventListener('click', () => {showModal();});
+
     //return all pokemon to pokemonRespoitory
     function getAll() {
         return pokemonList;
