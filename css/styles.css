@@ -13,6 +13,7 @@ body {
 
 .pokemon-list {
     list-style: none;
+    padding: 0;
 }
 
 .pokemon-button {
@@ -23,7 +24,7 @@ body {
     display: inline-block;
     font-size: 20px;
     font-weight: 800;
-    margin: 4px 2px;
+    margin: 4px 0px;
     cursor: pointer;
     background-color: ivory;
     color: darkblue;
@@ -52,21 +53,23 @@ body {
 
 .modal {
     margin: auto;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     background: #fff;
     padding: 15px;
-    width: 100%;
-    text-align: left;
+    width: 40%;
+    min-width: 300px;
+    align-items: center;
 }
 
 .modal-close {
-    float: right;
     -webkit-appearance: none;
     border: 0;
     background: none;
     color: #777;
-    text-decoration: underline;
+    text-decoration: none;
+    font-weight: 800;
 }
 
 .modal h1 {
@@ -75,4 +78,15 @@ body {
 
 .modal p {
     margin-bottom: 0;
+}
+.pokemon-image {
+    width: 150px;
+}
+
+.modal-close {
+    color: white;
+    padding: 10px 20px;
+    background-color: tomato;
+    border-radius: 10px;
+
 }
