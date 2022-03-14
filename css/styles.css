@@ -3,90 +3,48 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: lightpink;
+    background-color: lightblue;
+    font-size: 1.5em;
 }
 
-.pokemon-list {
-    list-style: none;
-    padding: 0;
+h1 {
+    text-align: center;
+    padding: 10px;
 }
 
-.pokemon-button {
-    width: 300px;
-    color: white;
-    padding: 16px 30px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: 800;
-    margin: 4px 0px;
-    cursor: pointer;
-    background-color: ivory;
-    color: darkblue;
-    border: 6px solid tomato;
-    border-radius: 15px;
-}
-
-#modal-container {
-    display: none;
-}
-
-#modal-container.is-visible {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left:  0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    overflow: auto;
-    display: grid;
+p {
     text-align: center;
 }
 
-.modal {
-    margin: auto;
+nav {
+    background-color: darkblue;
+}
+
+.container {
+    padding-top: 120px;
+}
+
+button.btn-primary{
+    text-transform: capitalize;
+    margin: 10px;
+    min-width: 200px;
+    border-radius: 10px;
+    border: 4px solid darkblue;
+    color: darkblue;
+}
+
+.modal-content {
+    background-color: lightblue;
+    border-radius: 10px;
+    border: 4px solid white;
+}
+
+.modal-body {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    background: #fff;
-    padding: 15px;
-    width: 40%;
-    min-width: 300px;
     align-items: center;
 }
 
-.modal-close {
-    -webkit-appearance: none;
-    border: 0;
-    background: none;
-    color: #777;
-    text-decoration: none;
-    font-weight: 800;
-}
-
-.modal h1 {
-    margin-top: 0;
-}
-
-.modal p {
-    margin-bottom: 0;
-}
-.pokemon-image {
-    width: 150px;
-}
-
-.modal-close {
-    color: white;
-    padding: 10px 20px;
-    background-color: tomato;
-    border-radius: 10px;
-
+.pokemon-modal-image {
+    width: 160px;
 }
